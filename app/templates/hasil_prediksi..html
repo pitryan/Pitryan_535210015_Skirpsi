@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Hasil Prediksi{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Hasil Prediksi Penjualan Kemeja Batik</h2>
+    
+    {% if hasil_prediksi %}
+        <h3>{{ hasil_prediksi }}</h3>
+    {% endif %}
+    
+    {% if prediksi_table %}
+        <h4>Tabel Hasil Prediksi</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Bulan</th>
+                    <th>Aktual (pcs)</th>
+                    <th>Prediksi (pcs)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in prediksi_table %}
+                <tr>
+                    <td>{{ row.bulan }}</td>
+                    <td>{{ row.aktual or 'N/A' }}</td>
+                    <td>{{ row.prediksi }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    
+    {% if mape is not none and mse is not none %}
+        <h4>Evaluasi Prediksi</h4>
+        <p><strong>MAPE:</strong> {{ mape }}</p>
+        <p><strong>MSE:</strong> {{ mse }}</p>
+    {% endif %}
+    
+    <a href="{{ url_for('main.prediksi_batik') }}" class="btn btn-primary">Kembali ke Form Prediksi</a>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Prediksi Penjualan Kemeja Koko{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1 class="header-title">Prediksi Penjualan Kemeja Koko</h1>
+</div>
+
+<div class="container">
+    <form method="POST" action="{{ url_for('main.prediksi_koko') }}" enctype="multipart/form-data" class="custom-upload-form">
+        <!-- Unggah file CSV untuk prediksi -->
+        {% for i in range(1, 5) %}
+        <div class="file-upload-group" id="file-group-{{ i }}">
+            <label for="file{{ i }}" class="file-label" data-original-text="Unggah file CSV penjualan tahun ke-{{ i }}:">
+                Unggah file CSV penjualan tahun ke-{{ i }}:
+            </label>
+            <div class="file-input-wrapper">
+                <input type="file" name="file{{ i }}" id="file{{ i }}" class="file-input" required onchange="toggleRemoveButton(this)">
+                <button type="button" class="remove-btn" hidden onclick="removeFile(this)">Remove</button>
+            </div>
+            <span class="file-feedback"></span>
+        </div>
+        {% endfor %}
+
+        <!-- Unggah file CSV untuk data aktual -->
+        <div class="file-upload-group" id="file-group-5">
+            <label for="file5" class="file-label" data-original-text="Unggah file CSV data aktual:">
+                Unggah file CSV data aktual:
+            </label>
+            <div class="file-input-wrapper">
+                <input type="file" name="file5" id="file5" class="file-input" required onchange="toggleRemoveButton(this)">
+                <button type="button" class="remove-btn" hidden onclick="removeFile(this)">Remove</button>
+            </div>
+            <span class="file-feedback"></span>
+        </div>
+
+        <button type="submit" class="btn btn-submit">Unggah dan Prediksi</button>
+    </form>
+
+    <!-- Hasil Prediksi -->
+    {% if hasil_prediksi %}
+    <h3>Hasil Prediksi</h3>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Bulan</th>
+                <th>Prediksi (pcs)</th>
+                <th>Aktual (pcs)</th>
+                <th>MAPE (%)</th>
+                <th>MSE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prediksi in hasil_prediksi %}
+            <tr>
+                <td>{{ prediksi["bulan"] }}</td>
+                <td>{{ prediksi["prediksi"] }}</td>
+                <td>{{ prediksi["aktual"] }}</td>
+                <td>{{ prediksi["MAPE"] if prediksi["MAPE"] != "N/A" else "N/A" }}</td>
+                <td>{{ prediksi["MSE"] if prediksi["MSE"] != "N/A" else "N/A" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+
+    <!-- Pesan Kesalahan -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="alert alert-danger">
+                <h5>Kesalahan:</h5>
+                <ul>
+                    {% for category, message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+
+<script src="{{ url_for('static', filename='form_upload.js') }}"></script>
+
+{% endblock %}

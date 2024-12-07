@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Hasil Filter Produk{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Hasil Filter Produk</h2>
+    <p>Prediksi untuk Produk "{{ produk }}" di Bulan {{ bulan }}:</p>
+    <ul>
+        <li>Total Penjualan: {{ total_produk }}</li>
+    </ul>
+    <a href="{{ url_for('main.prediksi_batik') }}" class="btn btn-secondary">Kembali</a>
+</div>
+{% endblock %}

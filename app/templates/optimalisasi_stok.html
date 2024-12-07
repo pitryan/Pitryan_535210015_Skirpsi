@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Optimalisasi Stok{% endblock %}
+
+{% block content %}
+
+<div class="header">
+    <h1 class="header-title">Optimalisasi Stok</h1>
+</div>
+
+    <p>Masukkan informasi permintaan, biaya per order, dan biaya penyimpanan untuk menghitung jumlah pemesanan optimal menggunakan metode EOQ.</p>
+
+    <form action="/optimalisasi_stok" method="post">
+        <div class="form-group">
+            <label for="demand">Permintaan (Unit per Bulan)</label>
+            <input type="number" id="demand" name="demand" required>
+        </div>
+
+        <div class="form-group">
+            <label for="order_cost">Biaya Per Order (Rp)</label>
+            <input type="number" id="order_cost" name="order_cost" required>
+        </div>
+
+        <div class="form-group">
+            <label for="holding_cost">Biaya Penyimpanan per Tahun (Rp)</label>
+            <input type="number" id="holding_cost" name="holding_cost" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Hitung EOQ</button>
+    </form>
+
+    {% if eoq_result %}
+        <div class="alert alert-success mt-3">
+            <h2>Hasil Optimalisasi Stok</h2>
+            <p>Jumlah pemesanan optimal untuk mengurangi biaya adalah: <strong>{{ eoq_result }} unit</strong>.</p>
+            <p>Frekuensi pemesanan yang disarankan: <strong>{{ frequency_result }} kali per bulan</strong>.</p>
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="alert alert-danger mt-3">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

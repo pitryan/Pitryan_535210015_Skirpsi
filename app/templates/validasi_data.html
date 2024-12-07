@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Validasi Data Penjualan{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1 class="header-title">Validasi Data Penjualan</h1>
+</div>
+
+<div class="form-container">
+    <!-- Form untuk mengunggah file -->
+    <form method="POST" action="{{ url_for('main.validasi_data') }}" enctype="multipart/form-data" class="custom-upload-form">
+        {% for i in range(1, 5) %}
+        <div class="file-upload-group" id="file-group-{{ i }}">
+            <label for="file{{ i }}" class="file-label" data-original-text="Unggah file CSV penjualan ke-{{ i }}:">
+                Unggah file CSV penjualan ke-{{ i }}:
+            </label>
+            <div class="file-input-wrapper">
+                <input type="file" name="file{{ i }}" id="file{{ i }}" class="file-input" onchange="toggleRemoveButton(this)" required>
+                <button type="button" class="remove-btn" onclick="removeFile(this)" hidden>Remove</button>
+            </div>
+            <span class="file-feedback"></span>
+        </div>
+        {% endfor %}
+        
+        <div class="file-upload-group" id="file-group-5">
+            <label for="file5" class="file-label" data-original-text="Unggah file CSV data aktual:">
+                Unggah file CSV data aktual:
+            </label>
+            <div class="file-input-wrapper">
+                <input type="file" name="file5" id="file5" class="file-input" onchange="toggleRemoveButton(this)" required>
+                <button type="button" class="remove-btn" onclick="removeFile(this)" hidden>Remove</button>
+            </div>
+            <span class="file-feedback"></span>
+        </div>
+
+        <button type="submit" class="btn btn-submit">Unggah dan Validasi</button>
+    </form>
+</div>
+
+<br>
+
+<!-- Menampilkan hasil validasi -->
+{% if hasil_validasi %}
+<div class="validation-results">
+    <h4>Hasil Validasi:</h4>
+    <ul>
+        {% for filename, status in hasil_validasi.items() %}
+            <li><strong>{{ filename }}:</strong> {{ status }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<!-- Menampilkan pesan error -->
+{% if errors %}
+<div class="alert alert-danger">
+    <h5>Kesalahan:</h5>
+    <ul>
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<script src="{{ url_for('static', filename='form_upload.js') }}"></script>
+
+{% endblock %}

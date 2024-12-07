@@ -1,0 +1,674 @@
+/* Struktur dasar dan posisi sidebar */
+#sidebar-wrapper {
+    width: 250px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 15px;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+#sidebar-wrapper .list-group-item {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    color: #6c757d;
+}
+
+#sidebar-wrapper .list-group-item i {
+    margin-right: 10px;
+    font-size: 1.2em;
+    color: inherit;
+}
+
+/* Warna ungu untuk menu yang aktif */
+#sidebar-wrapper .list-group-item.active {
+    background-color: #6f42c1 !important;
+    color: #fff !important;
+}
+
+#sidebar-wrapper .list-group-item.active i {
+    color: #fff !important;
+}
+
+/* Posisi Logout di bagian bawah */
+#sidebar-wrapper .list-group-flush:last-child {
+    margin-top: auto;
+}
+
+#page-content-wrapper {
+    margin-left: 250px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    padding-bottom: 60px; /* Ruang untuk footer */
+}
+
+/* Struktur dasar sidebar */
+#sidebar-wrapper {
+    width: 250px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    transition: margin 0.3s ease; /* Animasi untuk sidebar */
+}
+
+#page-content-wrapper {
+    margin-left: 250px;
+    transition: margin 0.3s ease; /* Animasi untuk konten */
+}
+
+/* Ketika tombol toggle ditekan, sembunyikan sidebar */
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -250px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    margin-left: 0;
+}
+
+/* Background gradasi untuk halaman login */
+.login-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Container form login */
+.login-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Gaya form login */
+.login-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-login:hover {
+    background: linear-gradient(to right, #8f94fb, #4e54c8);
+}
+
+/* Gaya link tambahan */
+.login-links {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+}
+
+.login-links a {
+    color: #777;
+    text-decoration: none;
+}
+
+.login-links a span {
+    color: #4e54c8;
+}
+
+.login-links a:hover span {
+    color: #8f94fb;
+}
+
+/* Gaya untuk footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Styles for quick links */
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links li {
+    margin-bottom: 10px;
+}
+
+.quick-links a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.quick-links a:hover {
+    background-color: #6f42c1;
+    color: #fff;
+}
+
+.quick-links a:hover i {
+    color: #fff;
+}
+
+.quick-links i {
+    margin-right: 10px;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+/* Styling container */
+.container {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Form upload styling */
+.custom-upload-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.file-upload-group {
+    margin-bottom: 15px;
+}
+
+.file-label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.file-input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.file-input:focus {
+    border-color: #4e54c8;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(78, 84, 200, 0.5);
+}
+
+/* Submit button styling */
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(to right, #8f94fb, #4e54c8);
+}
+
+/* Table styling */
+.table-bordered {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.table-bordered th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Styling tombol Remove */
+.remove-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: background 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Styling Header */
+.header {
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    text-align: center;
+    padding: 30px 0;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.header-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header Styling */
+.header {
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.header-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Form Container Styling */
+.form-container {
+    max-width: 500px; /* Atur ukuran maksimal form */
+    margin: 0 auto; /* Pusatkan form secara horizontal */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Elements Styling */
+.custom-upload-form {
+    width: 100%;
+}
+
+.file-upload-group {
+    margin-bottom: 15px;
+}
+
+.file-label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-input {
+    flex: 1;
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Submit Button Styling */
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(to right, #8f94fb, #4e54c8);
+}
+
+/* Header */
+.header {
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    color: white;
+    border-radius: 10px;
+}
+
+.header-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Form Container */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* File Input */
+.file-upload-group {
+    margin-bottom: 15px;
+}
+
+.file-label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-input {
+    flex: 1;
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Remove Button */
+.remove-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+/* Submit Button */
+.btn-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(to right, #8f94fb, #4e54c8);
+}
+
+/* Validation Results */
+.validation-results {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.validation-results h4 {
+    margin-bottom: 10px;
+}
+
+.validation-results ul {
+    list-style: none;
+    padding: 0;
+}
+
+.validation-results li {
+    margin-bottom: 5px;
+}
+
+.remove-btn[hidden] {
+    display: none;
+}
+
+.hero-section {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero-image {
+    width: 100%;
+    height: auto;
+    filter: brightness(70%);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.hero-overlay h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hero-overlay p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.btn-primary {
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #563d7c;
+}
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #5D4037; /* Coklat gelap */
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.section-title {
+    color: #5D4037; /* Warna coklat gelap */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-list li {
+    margin-bottom: 10px;
+}
+
+.contact-list a {
+    color: #6f42c1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-list a:hover {
+    color: #563d7c;
+}
+
+.product-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #5D4037; /* Coklat gelap */
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6f42c1;
+    margin-bottom: 20px;
+}
+
+.product-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.table-bordered th,
+.table-bordered td {
+    vertical-align: middle;
+    text-align: left;
+}
+
+.btn-lg {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+}
+
+.btn-primary {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #f8f9fa;
+    color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+

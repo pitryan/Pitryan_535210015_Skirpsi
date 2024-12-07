@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Prediksi Penjualan Kemeja Batik{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1 class="header-title">Prediksi Penjualan Kemeja Batik</h1>
+</div>
+
+    <br>
+    <div class="container">
+        <form method="POST" action="{{ url_for('main.prediksi_batik') }}" enctype="multipart/form-data" class="custom-upload-form">
+        <!-- Unggah file CSV untuk prediksi -->
+        {% for i in range(1, 5) %}
+        <div class="file-upload-group" id="file-group-{{ i }}">
+            <label for="file{{ i }}" class="file-label" data-original-text="Unggah file CSV penjualan bulan ke-{{ i }}:">
+                Unggah file CSV penjualan bulan ke-{{ i }}:
+            </label>
+            <div class="file-input-wrapper">
+                <input type="file" name="file{{ i }}" id="file{{ i }}" class="file-input" required>
+                <button type="button" class="remove-btn" onclick="removeFile(this)">Remove</button>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Unggah file CSV untuk data aktual -->
+        <div class="file-upload-group" id="file-group-5">
+            <label for="file5" class="file-label" data-original-text="Unggah file CSV data aktual:">
+                Unggah file CSV data aktual:
+            </label>
+            <div class="file-input-wrapper">
+                <input type="file" name="file5" id="file5" class="file-input" required>
+                <button type="button" class="remove-btn" onclick="removeFile(this)">Remove</button>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-submit">Unggah dan Prediksi</button>
+    </form>
+</div>
+    <br>
+
+    <!-- Tabel Hasil Prediksi -->
+    {% if hasil_tabel %}
+    <h4>Tabel Hasil Prediksi</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nama File</th>
+                <th>Data Aktual</th>
+                <th>Prediksi</th>
+                <th>MAPE</th>
+                <th>MSE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in hasil_tabel %}
+            <tr>
+                <td>{{ row["Nama File"] }}</td>
+                <td>{{ row["Data Aktual"] }}</td>
+                <td>{{ row["Prediksi"] }}</td>
+                <td>{{ row["MAPE"] }}</td>
+                <td>{{ row["MSE"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+
+    <!-- Pesan Flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flashes">
+                {% for category, message in messages %}
+                    <p class="alert alert-{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+
+<script src="{{ url_for('static', filename='form_upload.js') }}"></script>
+
+{% endblock %}

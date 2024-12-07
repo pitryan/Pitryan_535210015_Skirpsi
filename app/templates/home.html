@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section">
+    <img src="{{ url_for('static', filename='foto/banner_batik.png') }}" alt="Batik" class="hero-image">
+    <div class="hero-overlay">
+        <h1>Selamat Datang di Lina Batik Distro</h1>
+        <p>Melestarikan Tradisi, Menginspirasi Generasi</p>
+        <a href="#about" class="btn btn-primary">Lihat Koleksi</a>
+    </div>
+</div>
+
+<!-- Koleksi Section -->
+<div class="container mt-5" id="about">
+    <h2 class="section-title">Koleksi Kami</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='foto/batik1.jpg') }}" class="card-img-top" alt="Batik 1">
+                <div class="card-body">
+                    <h5 class="card-title">ACS 298</h5>
+                    <p class="card-text">Motif klasik dengan Perpaduan warna dasar hitam dan warna motif abu.</p>
+                    <a href="{{ url_for('main.detail_produk', id=1) }}" class="btn btn-outline-primary">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='foto/batik2.jpg') }}" class="card-img-top" alt="Batik 2">
+                <div class="card-body">
+                    <h5 class="card-title">ACS 192</h5>
+                    <p class="card-text">Motif tumbuhan dengan Perpaduan warna dasar coklat muda dan warna motif coklat.</p>
+                    <a href="{{ url_for('main.detail_produk', id=2) }}" class="btn btn-outline-primary">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{{ url_for('static', filename='foto/batik3.jpg') }}" class="card-img-top" alt="Batik 3">
+                <div class="card-body">
+                    <h5 class="card-title">ACS 150</h5>
+                    <p class="card-text">Motif bunga dengan Perpaduan warna dasar hitam dan warna motif coklat.</p>
+                    <a href="{{ url_for('main.detail_produk', id=3) }}" class="btn btn-outline-primary">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tentang Kami -->
+<div class="container my-5" >
+    <h2 class="section-title">Tentang Kami</h2>
+    <p>
+        Lina Batik Distro adalah pusat seni batik tradisional yang berkomitmen untuk melestarikan budaya lokal Indonesia.
+        Kami menghadirkan koleksi batik terbaik dengan motif-motif yang sarat makna dan filosofi.
+    </p>
+    <p>
+        Visi kami adalah menjadikan batik sebagai kebanggaan nasional yang diakui secara global.
+        Kami percaya bahwa batik bukan hanya kain, tetapi juga cerita dan warisan yang harus diteruskan.
+    </p>
+</div>
+
+<!-- Kontak -->
+<div class="container my-5">
+    <h2 class="section-title" >Hubungi Kami</h2>
+    <p>Jika Anda memiliki pertanyaan atau membutuhkan informasi lebih lanjut, jangan ragu untuk menghubungi kami.</p>
+    <ul class="contact-list">
+        <li><strong>Alamat:</strong> Jl. Perkapuran V No. 8A, Jakarta</li>
+        <li><strong>Email:</strong> <a href="mailto:linabatik@gmail.com">linabatik@gmail.com</a></li>
+        <li><strong>Telepon:</strong> <a href="tel:+6281234567890">+62 812 3456 7890</a></li>
+        <li><strong>Media Sosial:</strong>
+            <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

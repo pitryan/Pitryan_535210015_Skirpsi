@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Website Prediksi{% endblock %}</title>
+    
+    <!-- Link CDN Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Link CDN Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    
+    <!-- Link Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    
+    <!-- Link CSS Kustom -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-right d-flex flex-column" id="sidebar-wrapper">
+            <!-- Bagian Atas -->
+            <div class="sidebar-heading text-secondary">Menu</div>
+    
+            <!-- Bagian Tengah -->
+            <div class="list-group list-group-flush flex-grow-1 mt-3">
+                <a href="{{ url_for('main.home') }}" class="list-group-item list-group-item-action bg-light text-secondary {{ 'active' if request.path == url_for('main.home') else '' }}">
+                    <i class="bi bi-house-door"></i> Home
+                </a>
+                <a href="{{ url_for('main.validasi_data') }}" class="list-group-item list-group-item-action bg-light text-secondary {{ 'active' if request.path == url_for('main.validasi_data') else '' }}">
+                    <i class="bi bi-graph-up-arrow"></i> Validasi Data
+                </a>
+                <a href="{{ url_for('main.prediksi_batik') }}" class="list-group-item list-group-item-action bg-light text-secondary {{ 'active' if request.path == url_for('main.prediksi_batik') else '' }}">
+                    <i class="bi bi-graph-up-arrow"></i> Prediksi Penjualan Kemeja Batik
+                </a>
+                <a href="{{ url_for('main.prediksi_koko') }}" class="list-group-item list-group-item-action bg-light text-secondary {{ 'active' if request.path == url_for('main.prediksi_koko') else '' }}">
+                    <i class="bi bi-graph-up-arrow"></i> Prediksi Penjualan Kemeja Koko
+                </a>
+                <a href="{{ url_for('main.optimalisasi_stok') }}" class="list-group-item list-group-item-action bg-light text-secondary {{ 'active' if request.path == url_for('main.optimalisasi_stok') else '' }}">
+                    <i class="bi bi-pie-chart"></i> Optimalisasi Stok
+                </a>
+            </div>
+    
+            <!-- Bagian Bawah -->
+            <div class="list-group list-group-flush mb-3">
+                <a href="{{ url_for('main.logout') }}" class="list-group-item list-group-item-action bg-light text-secondary">
+                    <i class="bi bi-box-arrow-left"></i> Logout
+                </a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+    
+        <!-- Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-outline-secondary" id="menu-toggle">
+                    <i class="bi bi-list"></i>
+                </button>
+            </nav>
+
+            <div class="container-fluid">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+
+     
+</body>
+    <!-- Script Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+<script>
+    document.getElementById("menu-toggle").addEventListener("click", function(e) {
+        e.preventDefault();
+        document.getElementById("wrapper").classList.toggle("toggled");
+    });
+</script>
